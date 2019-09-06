@@ -1,63 +1,63 @@
 web:
   # The host that the management interface will be available on
-  host: postal.example.com
+  host: {POSTAL_DOMAIN}
   # The protocol that requests to the management interface should happen on
-  protocol: https
+  protocol: {POSTAL_PROTO}
 
 fast_server:
   # This can be enabled to enable click & open tracking on emails. It is disabled by
   # default as it requires a separate static IP address on your server.
-  enabled: false
-  bind_address:
+  enabled: {FASTSERVER_ENABLED}
+  bind_address: {FASTSERVER_BIND_ADDRESS}
 
 general:
   # This can be changed to allow messages to be sent from multiple IP addresses
-  use_ip_pools: false
+  use_ip_pools: {USE_IP_POOLS}
 
 main_db:
   # Specify the connection details for your MySQL database
-  host: 127.0.0.1
-  username: postal
-  password: p0stalpassw0rd
-  database: postal
+  host: {DB_HOSTNAME}:{DB_PORT}
+  username: {DB_USERNAME}
+  password: {DB_PASSWORD}
+  database: {DB_DATABASE}
 
 message_db:
   # Specify the connection details for your MySQL server that will be house the
   # message databases for mail servers.
-  host: 127.0.0.1
-  username: postal
-  password: p0stalpassw0rd
-  prefix: postal
+  host: {MSG_DB_HOST}:{MSG_DB_PORT}
+  username: {MSG_DB_USERNAME}
+  password: {MSG_DB_PASSWORD}
+  prefix: {MSG_DB_PREFIX}
 
 rabbitmq:
   # Specify the connection details for your RabbitMQ server.
-  host: 127.0.0.1
-  username: postal
-  password: p0stalpassw0rd
-  vhost: /postal
+  host: {RABBITMQ_HOST}
+  username: {RABBITMQ_USERNAME}
+  password: {RABBITMQ_PASSWORD}
+  vhost: {RABBITMQ_VHOST}
 
 dns:
   # Specifies the DNS record that you have configured. Refer to the documentation at
   # https://github.com/atech/postal/wiki/Domains-&-DNS-Configuration for further
   # information about these.
   mx_records:
-    - mx.postal.example.com
-  smtp_server_hostname: postal.example.com
-  spf_include: spf.postal.example.com
-  return_path: rp.postal.example.com
-  route_domain: routes.postal.example.com
-  track_domain: track.postal.example.com
+    - mx.{POSTAL_DOMAIN}
+  smtp_server_hostname: {POSTAL_DOMAIN}
+  spf_include: spf.{POSTAL_DOMAIN}
+  return_path: rp.{POSTAL_DOMAIN}
+  route_domain: routes.{POSTAL_DOMAIN}
+  track_domain: track.{POSTAL_DOMAIN}
 
 smtp:
   # Specify an SMTP server that can be used to send messages from the Postal management
   # system to users. You can configure this to use a Postal mail server once the
   # your installation has been set up.
-  host: 127.0.0.1
-  port: 2525
+  host: {SMTP_HOST}
+  port: {SMTP_PORT}
   username: # Complete when Postal is running and you can
   password: # generate the credentials within the interface.
-  from_name: Postal
-  from_address: postal@yourdomain.com
+  from_name: {APP_FROM_NAME}
+  from_address: {APP_FROM_EMAIL}
 
 rails:
   # This is generated automatically by the config initialization. It should be a random
