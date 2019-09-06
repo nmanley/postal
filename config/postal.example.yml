@@ -16,7 +16,8 @@ general:
 
 main_db:
   # Specify the connection details for your MySQL database
-  host: {DB_HOSTNAME}:{DB_PORT}
+  host: {DB_HOSTNAME}
+  port: {DB_POST}
   username: {DB_USERNAME}
   password: {DB_PASSWORD}
   database: {DB_DATABASE}
@@ -24,7 +25,8 @@ main_db:
 message_db:
   # Specify the connection details for your MySQL server that will be house the
   # message databases for mail servers.
-  host: {MSG_DB_HOST}:{MSG_DB_PORT}
+  host: {MSG_DB_HOST}
+  port: {MSG_DB_PORT}
   username: {MSG_DB_USERNAME}
   password: {MSG_DB_PASSWORD}
   prefix: {MSG_DB_PREFIX}
@@ -32,6 +34,7 @@ message_db:
 rabbitmq:
   # Specify the connection details for your RabbitMQ server.
   host: {RABBITMQ_HOST}
+  port: {RABBITMQ_PORT}
   username: {RABBITMQ_USERNAME}
   password: {RABBITMQ_PASSWORD}
   vhost: {RABBITMQ_VHOST}
